@@ -1,0 +1,196 @@
+@font-face {
+  font-family: "euclid-regular";
+  src: url(./fonts/Euclid-Circular-A\ Regular.ttf);
+}
+@font-face {
+  font-family: "euclid-medium";
+  src: url(./fonts/Euclid-Circular-A\ Medium.ttf);
+}
+@font-face {
+  font-family: "eucluid-semibold";
+  src: url(./fonts/Euclid-Circular-A\ SemiBold.ttf);
+}
+@font-face {
+  font-family: "Aspergit";
+  src: url(./fonts/Aspergit-Bold.otf);
+}
+:root {
+  --theme-color: #1253a8;
+  --background-color: #f2f2f2;
+  --text-color: #1f1f1f;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+body {
+  background-color: var(--background-color);
+  font-family: "euclid-medium";
+  color: var(--text-color);
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+h3.dafault {
+  margin-top: 100px;
+  color: gray;
+  text-align: center;
+}
+.datetime {
+  font-family: "Aspergit";
+  color: gray;
+  font-size: 12px;
+}
+img.nation {
+  width: 25px;
+}
+svg {
+  width: 22px;
+  margin-bottom: 5px;
+  margin: 0px auto;
+}
+.carrier {
+  font-size: 20px;
+  text-align: center;
+}
+section.nav__part {
+  position: relative;
+  max-width: 100%;
+  height: 100px;
+  background-color: var(--theme-color);
+  padding: 0px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--background-color);
+  font-family: "euclid-regular";
+}
+section.nav__part .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+section.main__section {
+  width: 100%;
+  height: 100%;
+}
+section.main__section .booking__list {
+  width: 700px;
+  height: 100%;
+  margin: 0px auto;
+  margin-top: 50px;
+}
+section.main__section .booking__list .header__text {
+  margin: 20px 0px;
+  font-size: 30px;
+}
+section.main__section .booking__list .booking {
+  width: 600px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0px auto;
+  margin-bottom: 30px;
+}
+section.main__section .booking__list .booking .book__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: solid 1px rgb(221, 221, 221);
+  padding-bottom: 10px;
+}
+section.main__section .booking__list .booking .book__head a {
+  color: var(--theme-color);
+  background-color: white;
+  padding: 7px 20px;
+  border: solid 1px var(--theme-color);
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+}
+section.main__section .booking__list .booking .book__head a:hover {
+  background-color: var(--theme-color);
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+section.main__section .booking__list .booking .book__body {
+  display: grid;
+  grid-template-columns: 25% 60%;
+  gap: 15%;
+  align-items: center;
+}
+section.main__section .booking__list .booking .book__body div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+section.main__section .booking__list .booking .book__body div .from,
+section.main__section .booking__list .booking .book__body div .to {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+section.main__section .booking__list .booking .book__body h3.type {
+  text-align: right;
+  font-size: 32px;
+  font-family: "Aspergit";
+  color: var(--theme-color);
+}
+@media screen and (max-width: 700px) {
+  section.main__section .booking__list {
+    width: 100%;
+    padding: 0px 10px;
+  }
+  section.main__section .booking__list .booking {
+    width: 400px;
+    margin: 10px auto;
+  }
+  section.main__section .booking__list .booking .book__body {
+    display: grid;
+    grid-template-columns: 20% 75%;
+    gap: 5%;
+    align-items: center;
+  }
+  section.main__section .booking__list .booking .book__body h3.type {
+    text-align: right;
+    font-size: 25px;
+    font-family: "Aspergit";
+    color: var(--theme-color);
+  }
+}
+@media screen and (max-width: 525px) {
+  section.main__section .booking__list {
+    width: 100%;
+    padding: 0px;
+  }
+  section.main__section .booking__list .booking {
+    width: 320px;
+    margin: 10px auto;
+  }
+  section.main__section .booking__list .booking .book__body {
+    display: grid;
+    grid-template-columns: 23% 74%;
+    gap: 3%;
+    align-items: center;
+  }
+  section.main__section .booking__list .booking .book__body h3.type {
+    text-align: right;
+    font-size: 22px;
+    font-family: "Aspergit";
+    color: var(--theme-color);
+  }
+  .carrier {
+    font-size: 17px;
+    text-align: center;
+  }
+}

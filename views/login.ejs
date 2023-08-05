@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tripQuest • login page</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="stylesheet" href="/login.css" />
+  </head>
+  <body>
+    <div class="whole__screen">
+      <div class="main__container">
+        <a href="/">
+          <img src="/tripQuestLogo.png" alt="logo" class="logo"
+        /></a>
+        <% if(error){ %>
+        <section class="error__handling">
+          <p><span>MSSG:</span> <%= error %></p>
+        </section>
+        <% } %>
+        <form method="POST" action="/login">
+          <div class="line"></div>
+          <div class="input__container">
+            <label for="usermail">Email</label>
+            <input
+              type="mail"
+              placeholder="John.Doe@mail.com"
+              name="usermail"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div class="line"></div>
+          <div class="input__container">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              placeholder="••••••••••"
+              name="password"
+              required
+            />
+          </div>
+          <div class="line"></div>
+          <button type="submit" class="submit__btn">Log in</button>
+        </form>
+        <div class="socials">
+          <div class="box">
+            <img src="./images/google.png" alt="google" />
+          </div>
+          <div class="box">
+            <img src="./images/apple.png" alt="apple" />
+          </div>
+        </div>
+        <p class="registration">
+          Don't yet have an account, we've got you.
+          <a href="/registration">Register Here</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

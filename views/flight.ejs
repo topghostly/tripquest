@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/flight.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <section class="nav__part">
+      <h1><a href="/">tripQuest.</a></h1>
+      <div class="profile">
+        <img src="/english-flag.png" alt="english-flag" class="nation" />
+        <h4><%= user.firstname %> <%= user.lastname %></h4>
+      </div>
+    </section>
+
+    <section class="form__part">
+      <div class="booking__box">
+        <form action="/search_result" method="GET">
+          <div class="form__box">
+            <div class="text">
+              <h3>Location</h3>
+              <input
+                type="text"
+                class="airportSearch"
+                name="Location"
+                placeholder="Enter nearest airport"
+                list="list"
+                value="<%= flights[0].departure %>"
+              />
+              <datalist class="fetched" id="list"></datalist>
+            </div>
+          </div>
+          <div class="form__box">
+            <div class="text">
+              <h3>Destination</h3>
+              <input
+                type="text"
+                class="airportSearch"
+                name="Destination"
+                placeholder="Enter destination airport"
+                list="list"
+                value="<%= flights[0].arrival %>"
+              />
+              <datalist class="fetched" id="list"></datalist>
+            </div>
+          </div>
+          <div class="form__box">
+            <div class="text">
+              <h3>Travelers</h3>
+              <select name="travelers" id="travelers">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </div>
+          <div class="form__box">
+            <div class="text">
+              <h3>From</h3>
+              <input
+                type="date"
+                id="datepicker"
+                name="date"
+                value="<%= date %>"
+              />
+            </div>
+          </div>
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+              width="800px"
+              height="800px"
+              viewBox="0 0 32 32"
+              version="1.1"
+            >
+              <title>search</title>
+              <defs></defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd"
+                sketch:type="MSPage"
+              >
+                <g
+                  id="Icon-Set"
+                  sketch:type="MSLayerGroup"
+                  transform="translate(-256.000000, -1139.000000)"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="1"
+                >
+                  <path
+                    d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z"
+                    id="search"
+                    sketch:type="MSShapeGroup"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="main__content">
+      <div class="main__container">
+        <div class="left">
+          <div class="results">
+            <p><span><%= flights.length %></span> Results</p>
+          </div>
+          <div class="price__calculator">
+            <h3>Price Calculator</h3>
+            <div class="section">
+              <p class="grey">Payment method</p>
+              <select name="" id="">
+                <option value="Master">MasterCard Dollar</option>
+                <option value="Master">MasterCard Naira</option>
+                <option value="Master">Verve Card</option>
+                <option value="Master">Interswitch</option>
+              </select>
+            </div>
+            <div class="section">
+              <p class="grey">Carry-on bag</p>
+              <select name="" id="">
+                <option value="Master">Select bags (0)</option>
+                <option value="Master">Select bags (1)</option>
+                <option value="Master">Select bags (2)</option>
+                <option value="Master">Select bags (3)</option>
+              </select>
+            </div>
+            <div class="section">
+              <p class="grey">Checked bag</p>
+              <select name="" id="">
+                <option value="Master">Select bags (0)</option>
+                <option value="Master">Select bags (1)</option>
+                <option value="Master">Select bags (2)</option>
+                <option value="Master">Select bags (3)</option>
+              </select>
+            </div>
+          </div>
+          <div class="line"></div>
+          <h3>Price</h3>
+          <div class="line"></div>
+          <h3>Cabin</h3>
+          <div class="line"></div>
+          <h3>Stopover airports</h3>
+          <div class="line"></div>
+          <h3>Flight quality</h3>
+          <div class="line"></div>
+          <h3>Booking sites</h3>
+        </div>
+        <div class="right">
+          <div class="flight__container">
+            <% for (const flight of flights){ %>
+            <div class="flight">
+              <div class="main">
+                <div class="air__name">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    width="27px"
+                    height="27px"
+                    viewBox="0 0 32 32"
+                    version="1.1"
+                    class="vg"
+                  >
+                    <title>plane</title>
+                    <path
+                      d="M12.25 8.719l-0.469 0.469 4 0.344 2.406-2.406c0.375-0.375 1.063-0.938 2.063-1.563s1.656-0.813 1.906-0.563c0.688 0.688 0 2.031-2.063 4.063l-2.375 2.375 0.344 4 0.469-0.438c0.375-0.406 0.781-0.406 1.094-0.094 0.375 0.375 0.219 0.906-0.531 1.656l-0.75 0.781 0.375 2.688 0.531-0.563c0.344-0.375 0.719-0.375 1.063-0.063 0.375 0.375 0.313 0.844-0.188 1.344l-1.125 1.125c0.438 3 0.5 4.688 0.156 5.031-0.156 0.125-0.375 0.25-0.688 0.313-0.281 0.031-0.531 0-0.688-0.125-0.125-0.156-0.313-0.719-0.5-1.688-0.219-1-0.75-2.688-1.688-5.063-0.906-2.406-1.563-3.75-1.875-4.094-0.125-0.125-0.313-0.125-0.531 0-0.219 0.094-1 0.75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-0.031 0.188 0.063 0.813 0.219 1.844s0.219 1.719 0.188 1.969c-0.063 0.25-0.313 0.594-0.719 1-0.219 0.219-0.375 0.344-0.531 0.375-0.406-0.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-0.125 0.125-0.313 0.344-0.531 0.406-0.406 0.75-0.656 1.031-0.688 0.25-0.063 0.906 0.031 1.938 0.219 1.031 0.156 1.656 0.219 1.875 0.219 0.75-1.125 2.156-2.781 4.344-4.969 0.625-0.688 0.813-1.125 0.594-1.344-0.313-0.344-1.688-0.969-4.063-1.875-2.406-0.906-4.063-1.5-5.063-1.688-1-0.219-1.563-0.375-1.688-0.531-0.156-0.125-0.188-0.375-0.125-0.688 0.031-0.313 0.156-0.531 0.313-0.688 0.313-0.313 2-0.281 5.031 0.156l1.094-1.125c0.5-0.469 0.969-0.531 1.344-0.156 0.344 0.313 0.313 0.688-0.031 1.031l-0.563 0.531 2.688 0.375 0.75-0.719c0.75-0.75 1.281-0.906 1.656-0.531 0.344 0.344 0.313 0.688-0.063 1.094z"
+                    />
+                  </svg>
+                  <p class="airline__name"><%= flight.carrier%></p>
+                  <p class="blue thin"><%= flight.duration%></p>
+                </div>
+
+                <div class="space"></div>
+                <div class="timeline">
+                  <div class="location">
+                    <p class="time"><%= flight.journeyStartTime %></p>
+                    <!-- <p class="date"><%= flight.journeyStartDate %></p> -->
+                    <p class="place"><%= flight.departure %></p>
+                  </div>
+                  <div class="connect">
+                    <div class="connection__line"></div>
+                    <div class="stops">
+                      <% for(const dot of flight.stopLocation){ %>
+                      <div class="stop__box">
+                        <div class="box"></div>
+                        <p><%= dot %></p>
+                      </div>
+                      <%} %>
+                    </div>
+                  </div>
+                  <div class="destination">
+                    <p class="time"><%= flight.journeyEndTime %></p>
+                    <!-- <p class="date"><%= flight.journeyEndDate %></p> -->
+                    <p class="place"><%= flight.arrival %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="price">
+                <h3>₦<%= flight.price %></h3>
+                <p class="grey thin">one-way</p>
+                <a
+                  href="/booking-deal?departure=<%=flight.departure%>&arrival=<%=flight.arrival%>&carrier=<%=flight.carrier%>&duration=<%=flight.duration%>&stopLocation=<%=flight.stopLocation%>&journeyStartDate=<%=flight.journeyStartDate%>&journeyStartTime=<%=flight.journeyStartTime%>&journeyEndDate=<%=flight.journeyEndDate%>&journeyEndTime=<%=flight.journeyEndTime%>&price=<%=flight.price%>&gateNo=<%=flight.gateNo%>&flightCode=<%=flight.flightCode%>"
+                  class="deal"
+                >
+                  View Deal
+                </a>
+                <div class="extra">
+                  <% if(flight.isRefundable){ %>
+                  <p class="blue thin">Fee is Refundable</p>
+                  <% } %> <% if(flight.hasChangePenalty){ %>
+                  <p class="blue thin">Change Penalty is attached</p>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const inputFields = document.querySelectorAll(".airportSearch");
+      inputFields.forEach((field) => {
+        field.addEventListener("input", async () => {
+          const input = field.value.trim();
+          if (input.length > 2) {
+            const responce = await fetch(
+              `https://www.air-port-codes.com/api/v1/autocomplete?term=${input}`,
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "APC-Auth": "6c523f4eaa",
+                  "APC-Auth-Secret": "21bf54ad24c9668",
+                },
+              }
+            );
+            const datalist = await responce.json();
+            const data = datalist.airports;
+            const fetchedList = document.querySelector(".fetched");
+            fetchedList.innerHTML = "";
+
+            data.map((airports) => {
+              if (airports.children) {
+                const children = airports.children;
+                children.forEach((child) => {
+                  const listOption = document.createElement("option");
+                  listOption.textContent = child.name;
+                  listOption.value = child.iata;
+                  fetchedList.appendChild(listOption);
+                });
+              }
+              console.log(airports);
+              const listOption = document.createElement("option");
+              listOption.textContent = airports.name;
+              listOption.value = airports.iata;
+              fetchedList.appendChild(listOption);
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

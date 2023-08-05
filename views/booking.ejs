@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./booking.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <section class="nav__part">
+      <h1>tripQuest.</h1>
+      <div class="profile">
+        <img src="/english-flag.png" alt="english-flag" class="nation" />
+        <h4><%= user.data.firstname %> <%= user.data.lastname %></h4>
+      </div>
+    </section>
+    <section></section>
+
+    <section class="form__part">
+      <div class="bank">
+        <div class="part">
+          <div class="label">Name:</div>
+          <div class="text">
+            <%= user.data.firstname %> <%= user.data.lastname %>
+          </div>
+        </div>
+      </div>
+      <div class="bank type__2">
+        <div class="part">
+          <div class="label">From:</div>
+          <div class="text"><%= data.departure %></div>
+        </div>
+        <div class="part">
+          <div class="label">Carrier:</div>
+          <div class="text">Air Africa</div>
+        </div>
+      </div>
+      <div class="bank type__3">
+        <div class="part">
+          <div class="label">To:</div>
+          <div class="text"><%= data.arrival %></div>
+        </div>
+        <div class="part">
+          <div class="label">Date:</div>
+          <div class="text"><%= data.journeyStartDate %></div>
+        </div>
+        <div class="part">
+          <div class="label">Time:</div>
+          <div class="text"><%= data.journeyStartTime %></div>
+        </div>
+      </div>
+      <div class="bank">
+        <div class="part">
+          <div class="label">Flight Type:</div>
+          <div class="text">Economy</div>
+        </div>
+      </div>
+      <div class="bank">
+        <div class="part">
+          <div class="label">Total Price:</div>
+          <div class="text price">₦<%= data.price %></div>
+        </div>
+      </div>
+      <div class="btn__container">
+        <a
+          class="save__link"
+          href="/save-ticket?departure=<%=data.departure%>&arrival=<%=data.arrival%>&carrier=<%=data.carrier%>&duration=<%=data.duration%>&stopLocation=<%=data.stopLocation%>&journeyStartDate=<%=data.journeyStartDate%>&journeyStartTime=<%=data.journeyStartTime%>&journeyEndDate=<%=data.journeyEndDate%>&journeyEndTime=<%=data.journeyEndTime%>&price=<%=data.price%>&gateNo=<%=data.gateNo%>&flightCode=<%=data.flightCode%>"
+          >Continue</a
+        >
+      </div>
+    </section>
+  </body>
+</html>

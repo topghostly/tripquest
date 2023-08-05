@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "euclid-regular";
+  src: url(./fonts/Euclid-Circular-A\ Regular.ttf);
+}
+@font-face {
+  font-family: "euclid-medium";
+  src: url(./fonts/Euclid-Circular-A\ Medium.ttf);
+}
+@font-face {
+  font-family: "eucluid-semibold";
+  src: url(./fonts/Euclid-Circular-A\ SemiBold.ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(./fonts/Montserrat-SemiBold.ttf);
+}
+:root {
+  --theme-color: #1253a8;
+  --background-color: #f2f2f2;
+  --text-color: #1f1f1f;
+}
+body {
+  background-color: var(--background-color);
+  background-image: url(./shaun-alam-UyvVGKtNuig-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "euclid-medium";
+  color: var(--text-color);
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+section.nav__part {
+  position: relative;
+  max-width: 100%;
+  height: 100px;
+  background-color: var(--theme-color);
+  padding: 0px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--background-color);
+  font-family: "euclid-regular";
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+img.nation {
+  width: 25px;
+}
+section.nav__part .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+section.form__part {
+  width: 270px;
+  min-height: 85vh;
+  padding: 50px 40px;
+  background-color: white;
+}
+section.form__part .btn__container {
+  width: 100%;
+  margin-top: 50px;
+}
+section.form__part a.save__link {
+  position: relative;
+  background-color: var(--theme-color);
+  color: white;
+  text-decoration: none;
+  padding: 7px 40px;
+  border-radius: 50px;
+}
+section.form__part .bank {
+  margin-bottom: 30px;
+  width: 100%;
+}
+.type__2 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.type__3 {
+  display: grid;
+  grid-template-columns: 27% 39% 33%;
+}
+section.form__part .bank .part {
+  width: 100%;
+  padding: 3px 5px;
+}
+section.form__part .bank .part .label {
+  font-size: 12px;
+  color: grey;
+  font-family: "euclid-regular";
+  margin-bottom: 5px;
+}
+.price {
+  font-family: "Montserrat";
+}

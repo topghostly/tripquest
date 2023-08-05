@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partial/head.ejs') %>
+  <body>
+    <nav>
+      <img src="/tripQuestLogo.png" alt="Logo" class="logo" />
+      <div class="mid__links">
+        <div class="link__container active"><a href="#">Home</a></div>
+        <div class="link__container"><a href="#">About</a></div>
+        <div class="link__container"><a href="#plan">Plans</a></div>
+      </div>
+      <div class="end__links">
+        <% if(user){ %>
+
+        <div class="cart">
+          <a href="/booking/cart">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              fill="currentColor"
+              height="30px"
+              width="30px"
+              version="1.1"
+              id="Layer_1"
+              viewBox="0 0 456.213 456.213"
+              xml:space="preserve"
+            >
+              <g id="XMLID_243_">
+                <g>
+                  <path
+                    d="M422.432,206.213l29.436-29.437L275.093,0l-91.924,91.924l10.606,10.606c5.849,5.849,5.849,15.364-0.001,21.213    c-2.833,2.833-6.6,4.394-10.605,4.394c-4.007,0-7.773-1.561-10.607-4.394l-10.606-10.606L68.88,206.213H3.107v250h290v-15    c0-8.271,6.729-15,15-15c8.272,0,15,6.729,15,15v15h130v-250H422.432z M158.107,356.213h-80v-30h80V356.213z M178.107,296.213    h-100v-30h100V296.213z M378.107,346.213H344.32l-35.606,35.606l-21.213-21.212l14.393-14.394h-58.787v-55h30v25h28.787    l-14.393-14.394l21.213-21.213l35.606,35.606h33.787V346.213z M380.006,206.214h-56.898v15c0,8.271-6.728,15-15,15    c-8.271,0-15-6.729-15-15v-15H111.305l52.452-52.453c5.984,2.864,12.581,4.376,19.411,4.376h0.001    c12.02,0,23.321-4.682,31.819-13.181c8.499-8.499,13.18-19.799,13.18-31.819c0-6.829-1.512-13.428-4.375-19.41l51.3-51.301    l134.35,134.351L380.006,206.214z"
+                  />
+                </g>
+              </g>
+            </svg>
+          </a>
+          <% if(bookingsAmount > 0){ %>
+          <div class="counter"><p><%= bookingsAmount %></p></div>
+          <% } %>
+        </div>
+        <div class="user__name">
+          <img src="/english-flag.png" alt="english-flag" class="nation" />
+          <h3><%= user.data.firstname %> <%= user.data.lastname %></h3>
+        </div>
+        <div class="logout">
+          <a href="/logout" class="Log">Log out</a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18px"
+            height="19px"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M14 20H6C4.89543 20 4 19.1046 4 18L4 6C4 4.89543 4.89543 4 6 4H14M10 12H21M21 12L18 15M21 12L18 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <% }else{ %>
+        <a href="/login" class="login">Log in</a>
+        <% } %>
+      </div>
+    </nav>
+    <% if(user) { %> <% if(error){ %>
+    <section class="error__handling">
+      <p><span>ERROR:</span> <%= error %></p>
+    </section>
+    <% } %> <% if(success){ %>
+    <section class="success__handling">
+      <p><span>SUCCESS:</span> <%= success %></p>
+    </section>
+    <% } %> <%}%>
+
+    <section class="hero__section">
+      <h1 class="hero__text">Find and Book a Great Vacation.</h1>
+      <img src="/heroBackground.png" alt="hero__image" class="hero__img" />
+    </section>
+
+    <section class="booking__field" id="plan">
+      <h1>Where to next<% if(user){ %>, <%= user.data.firstname %> <% }%>?</h1>
+      <div class="booking__box">
+        <div class="nav__part">
+          <div class="container active">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="800px"
+              height="800px"
+              viewBox="0 0 512 512"
+            >
+              <rect
+                width="480"
+                height="32"
+                x="16"
+                y="464"
+                fill="var(--ci-primary-color, currentColor)"
+                class="ci-primary"
+              />
+              <path
+                fill="var(--ci-primary-color, currentColor)"
+                d="M455.688,152.164c-23.388-6.515-48.252-6.053-70.008,1.3l-.894.3-65.1,30.94L129.705,109.176a47.719,47.719,0,0,0-49.771,8.862L54.5,140.836a24,24,0,0,0,2.145,37.452l117.767,83.458-45.173,23.663L93.464,252.722a48.067,48.067,0,0,0-51.47-8.6l-19.455,8.435a24,24,0,0,0-11.642,33.3L83.718,422.684,480.3,227.21c23.746-11.177,26.641-29.045,21.419-42.059C495.931,170.723,479.151,158.7,455.688,152.164Zm10.9,46.133-.149.07L97.394,380.267l-54.176-101.8,11.5-4.987a16.021,16.021,0,0,1,17.157,2.867l52.336,47.819,111.329-58.318L83.322,157.974l17.971-16.108a15.908,15.908,0,0,1,16.59-2.954l202.943,80.681,75.95-36.095c15.456-5.009,33.863-5.165,50.662-.413,13.834,3.914,21.182,9.6,23.672,12.582A24.211,24.211,0,0,1,466.59,198.3Z"
+                class="ci-primary"
+              />
+            </svg>
+            <p>Flights</p>
+          </div>
+          <div class="container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              fill="currentColor"
+              width="800px"
+              height="800px"
+              viewBox="0 0 50 50"
+            >
+              <path
+                d="M12.691406 0L11.564453 2.3320312L9 2.6386719L10.949219 4.3613281L10.435547 7L12.691406 5.6816406L14.949219 7L14.435547 4.3613281L16.384766 2.6386719L13.820312 2.3320312L12.691406 0 z M 14.949219 7L10.435547 7L9.3007812 7C6.3730036 7 4 9.3730039 4 12.300781L4 45 A 1.0001 1.0001 0 0 0 5 46L45 46 A 1.0001 1.0001 0 0 0 46 45L46 12.300781C46 9.3730039 43.626997 7 40.699219 7L39.564453 7L35.050781 7L31.359375 7L26.845703 7L23.154297 7L18.640625 7L14.949219 7 z M 18.640625 7L20.896484 5.6816406L23.154297 7L22.640625 4.3613281L24.589844 2.6386719L22.025391 2.3320312L20.896484 0L19.769531 2.3320312L17.205078 2.6386719L19.154297 4.3613281L18.640625 7 z M 26.845703 7L29.103516 5.6816406L31.359375 7L30.845703 4.3613281L32.794922 2.6386719L30.230469 2.3320312L29.103516 0L27.974609 2.3320312L25.410156 2.6386719L27.359375 4.3613281L26.845703 7 z M 35.050781 7L37.308594 5.6816406L39.564453 7L39.050781 4.3613281L41 2.6386719L38.435547 2.3320312L37.308594 0L36.179688 2.3320312L33.615234 2.6386719L35.564453 4.3613281L35.050781 7 z M 9.3007812 9L40.699219 9C42.571441 9 44 10.428559 44 12.300781L44 44L29 44L29 36 A 1.0001 1.0001 0 0 0 28 35L22 35 A 1.0001 1.0001 0 0 0 21 36L21 44L6 44L6 12.300781C6 10.428559 7.4285592 9 9.3007812 9 z M 10 11 A 1.0001 1.0001 0 0 0 9 12L9 16 A 1.0001 1.0001 0 0 0 10 17L16 17 A 1.0001 1.0001 0 0 0 17 16L17 12 A 1.0001 1.0001 0 0 0 16 11L10 11 z M 22 11 A 1.0001 1.0001 0 0 0 21 12L21 16 A 1.0001 1.0001 0 0 0 22 17L28 17 A 1.0001 1.0001 0 0 0 29 16L29 12 A 1.0001 1.0001 0 0 0 28 11L22 11 z M 34 11 A 1.0001 1.0001 0 0 0 33 12L33 16 A 1.0001 1.0001 0 0 0 34 17L40 17 A 1.0001 1.0001 0 0 0 41 16L41 12 A 1.0001 1.0001 0 0 0 40 11L34 11 z M 11 13L15 13L15 15L11 15L11 13 z M 23 13L27 13L27 15L23 15L23 13 z M 35 13L39 13L39 15L35 15L35 13 z M 10 19 A 1.0001 1.0001 0 0 0 9 20L9 24 A 1.0001 1.0001 0 0 0 10 25L16 25 A 1.0001 1.0001 0 0 0 17 24L17 20 A 1.0001 1.0001 0 0 0 16 19L10 19 z M 22 19 A 1.0001 1.0001 0 0 0 21 20L21 24 A 1.0001 1.0001 0 0 0 22 25L28 25 A 1.0001 1.0001 0 0 0 29 24L29 20 A 1.0001 1.0001 0 0 0 28 19L22 19 z M 34 19 A 1.0001 1.0001 0 0 0 33 20L33 24 A 1.0001 1.0001 0 0 0 34 25L40 25 A 1.0001 1.0001 0 0 0 41 24L41 20 A 1.0001 1.0001 0 0 0 40 19L34 19 z M 11 21L15 21L15 23L11 23L11 21 z M 23 21L27 21L27 23L23 23L23 21 z M 35 21L39 21L39 23L35 23L35 21 z M 10 27 A 1.0001 1.0001 0 0 0 9 28L9 32 A 1.0001 1.0001 0 0 0 10 33L16 33 A 1.0001 1.0001 0 0 0 17 32L17 28 A 1.0001 1.0001 0 0 0 16 27L10 27 z M 22 27 A 1.0001 1.0001 0 0 0 21 28L21 32 A 1.0001 1.0001 0 0 0 22 33L28 33 A 1.0001 1.0001 0 0 0 29 32L29 28 A 1.0001 1.0001 0 0 0 28 27L22 27 z M 34 27 A 1.0001 1.0001 0 0 0 33 28L33 32 A 1.0001 1.0001 0 0 0 34 33L40 33 A 1.0001 1.0001 0 0 0 41 32L41 28 A 1.0001 1.0001 0 0 0 40 27L34 27 z M 11 29L15 29L15 31L11 31L11 29 z M 23 29L27 29L27 31L23 31L23 29 z M 35 29L39 29L39 31L35 31L35 29 z M 10 35 A 1.0001 1.0001 0 0 0 9 36L9 40 A 1.0001 1.0001 0 0 0 10 41L16 41 A 1.0001 1.0001 0 0 0 17 40L17 36 A 1.0001 1.0001 0 0 0 16 35L10 35 z M 34 35 A 1.0001 1.0001 0 0 0 33 36L33 40 A 1.0001 1.0001 0 0 0 34 41L40 41 A 1.0001 1.0001 0 0 0 41 40L41 36 A 1.0001 1.0001 0 0 0 40 35L34 35 z M 11 37L15 37L15 39L11 39L11 37 z M 23 37L27 37L27 44L23 44L23 37 z M 35 37L39 37L39 39L35 39L35 37 z"
+              />
+            </svg>
+            <p>Hostel</p>
+          </div>
+          <div class="container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="800px"
+              height="800px"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.77988 6.77277C6.88549 6.32018 7.28898 6 7.75372 6H16.2463C16.711 6 17.1145 6.32018 17.2201 6.77277L17.7398 9H17H7H6.26019L6.77988 6.77277ZM2 11H2.99963C2.37194 11.8357 2 12.8744 2 14V15C2 16.3062 2.83481 17.4175 4 17.8293V20C4 20.5523 4.44772 21 5 21H6C6.55228 21 7 20.5523 7 20V18H17V20C17 20.5523 17.4477 21 18 21H19C19.5523 21 20 20.5523 20 20V17.8293C21.1652 17.4175 22 16.3062 22 15V14C22 12.8744 21.6281 11.8357 21.0004 11H22C22.5523 11 23 10.5523 23 10C23 9.44772 22.5523 9 22 9H21C20.48 9 20.0527 9.39689 20.0045 9.90427L19.9738 9.77277L19.1678 6.31831C18.851 4.96054 17.6405 4 16.2463 4H7.75372C6.35949 4 5.14901 4.96054 4.8322 6.31831L4.02616 9.77277L3.99548 9.90426C3.94729 9.39689 3.51999 9 3 9H2C1.44772 9 1 9.44772 1 10C1 10.5523 1.44772 11 2 11ZM7 11C5.34315 11 4 12.3431 4 14V15C4 15.5523 4.44772 16 5 16H6H18H19C19.5523 16 20 15.5523 20 15V14C20 12.3431 18.6569 11 17 11H7ZM6 13.5C6 12.6716 6.67157 12 7.5 12C8.32843 12 9 12.6716 9 13.5C9 14.3284 8.32843 15 7.5 15C6.67157 15 6 14.3284 6 13.5ZM16.5 12C15.6716 12 15 12.6716 15 13.5C15 14.3284 15.6716 15 16.5 15C17.3284 15 18 14.3284 18 13.5C18 12.6716 17.3284 12 16.5 12Z"
+                fill="currentColor"
+              />
+            </svg>
+            <p>Cars</p>
+          </div>
+        </div>
+        <form action="/search_result" method="GET">
+          <div class="form__part">
+            <div class="form__box">
+              <div class="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                  width="800px"
+                  height="800px"
+                  viewBox="-4 0 32 32"
+                  version="1.1"
+                >
+                  <title>location</title>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    sketch:type="MSPage"
+                  >
+                    <g
+                      id="Icon-Set"
+                      sketch:type="MSLayerGroup"
+                      transform="translate(-104.000000, -411.000000)"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z"
+                        id="location"
+                        sketch:type="MSShapeGroup"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div class="text">
+                <h3>Location</h3>
+                <input
+                  type="text"
+                  class="airports"
+                  name="Location"
+                  placeholder="Enter nearest airport"
+                  list="data-list"
+                />
+                <datalist class="fetched__list" id="data-list"></datalist>
+              </div>
+            </div>
+            <div class="form__box">
+              <div class="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                  id="_x32_"
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <style type="text/css"></style>
+                  <g>
+                    <path
+                      class="st0"
+                      fill="currentColor"
+                      fill-width="1"
+                      d="M394.977,170.953c1.141-2.109,1.016-4.719-0.328-6.734l-37.047-55.563c-1.453-2.188-1.453-5.063,0-7.266   l37.047-55.563c1.344-2.016,1.469-4.609,0.328-6.734c-1.156-2.125-3.375-3.469-5.781-3.469H216.398v138.813h172.797   C391.602,174.438,393.82,173.078,394.977,170.953z"
+                    />
+                    <path
+                      class="st0"
+                      fill="currentColor"
+                      fill-width="1"
+                      d="M511.805,473.203l-8.703-19.141l-90.547-199.438H295.633h-9.344H213.68v31.547h54.031h46.5h20.688   L230.523,417.063L87.68,356.859l32.094-70.688h25.344v-31.547H99.43L0.195,473.203c-0.313,0.703-0.25,1.5,0.156,2.141   c0.422,0.641,1.125,1.031,1.891,1.031h507.516c0.766,0,1.469-0.391,1.891-1.031C512.055,474.703,512.117,473.906,511.805,473.203z    M355.086,286.172h37.141l40.828,89.922L323.914,325.25L355.086,286.172z M47.758,444.813l33.406-73.578l174.563,73.578H47.758z    M296.367,444.813l-50.734-21.391l68.156-85.469l129.281,60.203l21.172,46.656H296.367z"
+                    />
+                    <rect
+                      x="160.898"
+                      y="35.625"
+                      class="st0"
+                      width="37"
+                      height="296.078"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="text">
+                <h3>Destination</h3>
+                <input
+                  type="text"
+                  class="airports"
+                  name="Destination"
+                  placeholder="Enter destination airport"
+                  list="data-list"
+                />
+                <datalist class="fetched__list" id="data-list"></datalist>
+              </div>
+            </div>
+            <div class="form__box">
+              <div class="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_901_2595)">
+                    <path
+                      d="M1 31C1 31 1.687 27.379 2 26C2.208 25.083 3 23 11 22C11 22 12 25 16 25C20 25 21 22 21 22C29 23 29.792 25.021 30 26C30.294 27.384 31 31 31 31M10 11C10 14.866 13 18 16 18C19 18 22 14.866 22 11M8 30V31M24 30V31M6 8H23C23 4.134 19.866 1 16 1C12.134 1 9 4.134 9 8"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_901_2595">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="text">
+                <h3>Travelers</h3>
+                <select name="travelers" id="travelers">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__box">
+              <div class="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M6,22H18a3,3,0,0,0,3-3V7a2,2,0,0,0-2-2H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H5A2,2,0,0,0,3,7V19A3,3,0,0,0,6,22ZM5,12.5a.5.5,0,0,1,.5-.5h13a.5.5,0,0,1,.5.5V19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1Z"
+                  />
+                </svg>
+              </div>
+              <div class="text">
+                <h3>From</h3>
+                <input type="date" id="datepicker" name="date" />
+              </div>
+            </div>
+          </div>
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+              width="800px"
+              height="800px"
+              viewBox="0 0 32 32"
+              version="1.1"
+            >
+              <title>search</title>
+              <desc>Created with Sketch Beta.</desc>
+              <defs></defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="2"
+                fill="none"
+                fill-rule="evenodd"
+                sketch:type="MSPage"
+              >
+                <g
+                  id="Icon-Set"
+                  sketch:type="MSLayerGroup"
+                  transform="translate(-256.000000, -1139.000000)"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="1"
+                >
+                  <path
+                    d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z"
+                    id="search"
+                    sketch:type="MSShapeGroup"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="grid__pics">
+      <h1>Trending destinations</h1>
+      <div class="grid type__2">
+        <div>
+          <img class="background" src="/lagos.jpg" alt="nigeria" />
+          <p>
+            Nigeria
+            <img class="flag" src="./images/nigeria.png" alt="nigeria" />
+          </p>
+        </div>
+        <div>
+          <img class="background" src="/london.jpg" alt="nigeria" />
+          <p>
+            London
+            <img
+              class="flag"
+              src="./images/united-kingdom.png"
+              alt="united-kingdom"
+            />
+          </p>
+        </div>
+      </div>
+      <div class="grid type__3">
+        <div>
+          <img class="background" src="/paris.jpg" alt="nigeria" />
+          <p>
+            Paris <img class="flag" src="./images/france.png" alt="france" />
+          </p>
+        </div>
+        <div>
+          <img class="background" src="/canada.jpg" alt="nigeria" />
+          <p>
+            Canada <img class="flag" src="./images/canada.png" alt="canada" />
+          </p>
+        </div>
+        <div>
+          <img class="background" src="/rome.jpg" alt="nigeria" />
+          <p>Rome <img class="flag" src="./images/italy.png" alt="italy" /></p>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    //
+    ////
+    // Code to get airports IATA code using the air-port-code API
+    ////
+    //
+
+    // Making a reference to teh input fields
+    const inputFields = document.querySelectorAll(".airports");
+    inputFields.forEach((field) => {
+      // Added an event listener to know when user starts typing
+      field.addEventListener("input", async () => {
+        const input = field.value.trim();
+        if (input.length > 1) {
+          // Start fetching when typed letter is graeter than pne
+          const responce = await fetch(
+            `https://www.air-port-codes.com/api/v1/autocomplete?term=${input}`,
+            {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "APC-Auth": "6c523f4eaa",
+                "APC-Auth-Secret": "21bf54ad24c9668",
+              }, // Fetch data from air-port-codes
+            }
+          );
+
+          // Covert responce to json format
+          const datalist = await responce.json();
+          const data = datalist.airports;
+          const fetchedList = document.querySelector(".fetched__list");
+          fetchedList.innerHTML = "";
+
+          data.map((airports) => {
+            // Map date to datalist element
+            if (airports.children) {
+              const children = airports.children;
+              children.forEach((child) => {
+                const listOption = document.createElement("option");
+                listOption.textContent = child.name;
+                listOption.value = child.iata;
+                fetchedList.appendChild(listOption);
+              });
+            }
+            console.log(airports);
+            const listOption = document.createElement("option");
+            listOption.textContent = airports.name;
+            listOption.value = airports.iata;
+            fetchedList.appendChild(listOption);
+          });
+        }
+      });
+    });
+  </script>
+</html>
